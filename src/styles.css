@@ -1,0 +1,212 @@
+body,html{
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+}
+
+body{
+    
+    background-repeat: no-repeat !important;
+    background-position: center top !important;
+    background-size: cover !important;
+    min-height: 100vh;
+}
+.wrap{
+    background-color: #fff !important;
+}
+a, input, button {
+    font-size: 15px;
+    outline: none !important;
+}
+
+hr{
+    margin-top: 0px !important;
+    margin-bottom: 15px !important;
+}
+
+.brd-radius {
+    border-radius: 6px;
+}
+.brd-bottom {
+    border-radius: 0px 0px 6px 6px;
+}
+
+.brd-top {
+    border-radius: 6px 6px 0px 0px;
+}
+.wrap{
+    height:100vh;
+}
+.hm-300{
+    min-height: 300px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+.emptyDiv{
+    padding: 20px;
+    text-align: center;
+}
+li{
+    list-style: none
+}
+.ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.wrap-inner{
+    padding:50px;
+}
+.alert-sm {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+}
+.padding-sm{
+    padding:10px;
+}
+.cursor{
+    cursor:pointer;
+}
+.row{
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+}
+
+input[type=text]:disabled {
+    background: #cccccc;
+    border-color:#cccccc;
+    cursor:not-allowed;
+}
+input[type=submit]:disabled {
+    background: #cccccc;
+    border-color:#cccccc;
+    cursor:not-allowed;
+}
+.errorInput{
+    border-left: 3px solid #f45642 !important;
+}
+.errorLabel{
+    color: #f45642 !important;
+    margin-top: 0px;
+    position: absolute;
+}
+.errorColor {
+    color: #f45642 !important;
+}
+input:focus{
+    border-left: 3px solid #0074f2;
+    transition: border-color .6s ease-out;
+}
+.errorInput::-webkit-input-placeholder, .errorInput::-webkit-input-placeholder,
+  .errorInput::-moz-placeholder, .errorInput::-moz-placeholder, .errorInput::placeholder, .errorInput::-ms-input-placeholder, .errorInput:-ms-input-placeholder,.errroInput:-moz-placeholder  {
+    color: #fff !important;
+  }
+
+.lbTitle{
+    color: #7c7d7e;
+    font-weight: 100;
+    letter-spacing: 4px;
+    line-height: 1.7em;
+    padding: 0 40px;
+    text-transform: uppercase;
+}
+
+.lbLabel{
+    background: #fff none repeat scroll 0 0;
+    color: #7c7d7e;
+    font-weight: 100;
+    letter-spacing: 4px;
+    line-height: 1.7em;
+    text-transform: uppercase;
+}
+
+.slab-header-modulab-icon{
+    background-image: url('/img/only_logo.png') !important;
+    background-repeat: repeat-y !important;
+    background-size: 80px 45px !important;
+    width: 80px !important;
+}
+.icon-modulab:before {
+    content: "" !important;
+}
+
+.slab-input:disabled, input:disabled {
+    color: #7c7d7e !important;
+}
+
+img.mr-4{
+    margin-right: auto !important;
+  }
+
+.dropdown-menu {
+    position: absolute !important;
+}
+.slab-combo-dropdown-box{
+    top:0px !important;
+    left: 0px !important;
+}
+systelab- .ag-layout-normal .ag-body {
+    height: 100%;
+    position: relative !important;
+}
+/*GRIDS*/
+.ag-body-container  .ag-row{
+    cursor: pointer !important;
+}
+.ag-body-container  .ag-row:hover{
+    background-color:#c9dde1;
+}
+.ag-fresh .ag-body{
+    background-color: #ffffff !important;
+}
+
+.slab-header__logo{
+    height: 150px !important;
+    margin-right: auto !important;
+    margin-left: auto;
+}
+.slab-login {
+    min-height: 100vh !important;
+  }
+
+ .slab-content-comments  .slab-login__background {
+    display: none !important;
+}
+.slab-content-comments .slab-login{
+    height: 470px !important;
+    max-height: 470px !important;
+    min-height: 470px !important;
+    margin-left: auto;
+    margin-right: auto;
+    width: 400px;
+}
+.slab-combobox.h-100{
+    height: auto !important;
+}
+.overflow-hidden {
+    overflow: hidden;
+}
+.bg-blue {
+    color: #fff;
+    background-color: #2196f3;
+}
+.bg-white {
+    color: #616161;
+    background-color: #fff;
+}
+.bg-danger {
+    color: #fff;
+    background-color: #d96557;
+}
+.bg-success {
+    color: #fff;
+    background-color: #2ecc71;
+}
+.bg-warning {
+    color: #fff;
+    background-color: #ffc107 !important;
+}
+.carousel-control-prev, .carousel-control-next,.carousel-indicators {
+    display:none !important;
+}

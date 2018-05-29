@@ -1,0 +1,40 @@
+<div class="container-fluid ">
+	<div class="  text-left  pt-5 pl-4">
+		<h3 class="lbTitle pl-1">{{item.title}}</h3>
+	</div>
+</div>
+
+<div class="container-fluid justify-content-md-left pl-5 ">
+	<div class="draftLabel" *ngIf="item.draft">
+		<label class="label label-draft bg-danger text-white p-2">{{ 'COMMON_DRAFT' | translate | async }}</label>
+	</div>
+	<div class="card col-md-12 col-lg-10 fill pl-0 pr-0 ">
+		<img class="card-img-top" [src]="'data:image/jpeg;base64,'+image">
+	</div>
+</div>
+<div class="container-fluid row justify-content-md-left ">
+	<div class="  text-left CardAlargada ">
+		<div *ngIf="item.name && item.lastname">
+			<label class="lbLabel">{{ 'COMMON_AUTHOR' | translate | async }}</label>
+			<span>{{item.name}} {{item.lastname}}</span>
+		</div>
+		<div *ngIf="item.name && item.lastname">
+			<label class="lbLabel">{{ 'COMMON_CATEGORY' | translate | async }}:</label>
+			<span>{{item.nameCategory}}</span>
+		</div>
+		<div *ngIf="item.dob">
+			<label class="lbLabel">{{ 'COMMON_DATE' | translate | async }}</label>
+			<span>{{item.dob}}</span>
+		</div>
+	</div>
+</div>
+<div class="container-fluid ">
+	<div class="  text-left CardAlargada mt-0">
+		<div>
+			<span class="lbLabel">{{ 'COMMON_DESCRIPTION' | translate | async }}</span>
+		</div>
+		<div class="pt-3 text-justify">
+			<markdown [data]="item.description"></markdown>
+		</div>
+	</div>
+</div>

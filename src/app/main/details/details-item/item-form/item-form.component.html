@@ -1,0 +1,61 @@
+<form class="pt-2" #theFormProfile="ngForm" novalidate>
+	<div class="row mt-1 pt-2">
+		<div class="col-md-4">
+			<input type="checkbox" (change)="checkDraft()" [checked]="item.draft" id="chDraft">
+			<label for="chDraft" class="col-form-label"> {{ 'COMMON_SET_DRAFT' | translate | async }}</label>
+		</div>
+	</div>
+	<div class="row mt-1 pt-2">
+		<div class="col-md-4">
+			<input type="checkbox" (change)="checkPublish()" [checked]="item.pinned" id="chPinned">
+			<label for="chPinned" class="col-form-label"> {{ 'COMMON_PUBLISH_POST' | translate | async }}</label>
+		</div>
+	</div>
+	<div class="row mt-1 pt-2">
+		<div class="col-md-12">
+			<label class="col-form-label text-truncate lbLabel">{{ 'COMMON_CATEGORY' | translate | async }}</label>
+			<span class="errorLabel">*</span>
+			<systelab-select *ngIf="comboCategories.length > 0" [description]="desCategory" [id]="item.idCategory" [values]="comboCategories"
+			 [isDisabled]="false" (change)="comboChangeEvent($event)">
+			</systelab-select>
+		</div>
+	</div>
+	<div class="row mt-1 pt-2">
+		<div class="col-md-12">
+			<label for="txtitle" class="col-form-label text-truncate lbLabel">{{ 'COMMON_TITLE' | translate | async }}</label>
+			<span class="errorLabel">*</span>
+			<input type="text" class="form-control" [class.errorInput]="txtitle.invalid" [(ngModel)]="item.title" name="txtitle" #txtitle
+			 placeholder="{{ 'COMMON_TITLE' | translate | async }}" required>
+		</div>
+	</div>
+	<div class="row mt-1 pt-2">
+		<div class="col-md-12">
+			<label for="txtitle" class="col-form-label text-truncate lbLabel">{{ 'COMMON_EXPIRATION_DATE' | translate | async }}</label>
+			<span class="errorLabel">*</span>
+			<div class="col-md-4 pl-0">
+				<systelab-datepicker [(currentDate)]="item.expirationDate"></systelab-datepicker>
+			</div>
+
+		</div>
+	</div>
+	<div class="row mt-1 pt-2">
+		<div class="col-md-12">
+			<label for="txdescription" class="col-form-label text-truncate lbLabel">{{ 'COMMON_DESCRIPTION' | translate | async }}</label>
+			<textarea (keyup)="count()" class="form-control" name="txdescription" rows="5" [(ngModel)]="item.description"></textarea>
+			<span class="help-block float-right ">{{maxLength}} </span>
+			<span class="help-block float-right "> / </span>
+			<span class="help-block float-right" [class.errorColor]="remaining < 20">{{remaining}}</span>
+			<a href="https://jfcere.github.io/ngx-markdown/" target="_blank">{{ 'COMMON_MARKDOWN' | translate | async }}</a>
+		</div>
+	</div>
+
+	<div class="form-group text-center" style="margin-bottom: 20px;">
+
+		<button type="button" *ngIf="item.id > 0" class="w-50 btn btn-primary mt-4" [disabled]="(txtitle.invalid &&  txtitle.touched) || item.idCategory==0|| !item.title  || errorMessage > 0"
+		 (click)="doUpdate()">{{ 'COMMON_UPDATE' | translate | async }}
+		</button>
+		<button type="button" *ngIf="item.id == 0 || !item.id" class="w-50 btn btn-primary mt-4" [disabled]="(txtitle.invalid &&  txtitle.touched) ||item.idCategory==0||  !item.title || errorMessage > 0"
+		 (click)="doSave()">{{ 'COMMON_NEXT_STEP' | translate | async }}
+		</button>
+	</div>
+</form>

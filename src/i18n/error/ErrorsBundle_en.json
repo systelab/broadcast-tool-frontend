@@ -1,0 +1,5 @@
+{
+    "ERROR_INCORRECT_USERNAME_OR_PASSWORD":"Usuario o contraseña incorrecta",
+    "COMMON_FIELDS_WRONG":"Algun campo esta mal escrito",
+    "COMMON_ERROR_SAVING_DATA":"Error guardando los datos"
+}

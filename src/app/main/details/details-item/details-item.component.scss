@@ -1,0 +1,76 @@
+.title {
+  color: grey;
+  font-size: 18px;
+}
+h5{
+  color:#6c757d;
+  margin-top:15px;
+}
+.fill {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden
+}
+a {
+  text-decoration: none;
+  font-size: 22px;
+  color: black;
+  font-size: 10pt;
+}
+.widget{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top:40px;
+}
+.widget .widget-icon {
+  display: inline-block;
+  vertical-align: middle;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  text-align: center;
+  font-size: 16px;
+  line-height: 40px;
+}
+.widget .widget-icon.pull-left {
+  margin-right: 15px;
+}
+.widget .widget-title {
+  display: block;
+  font-size: 20px;
+  line-height: 1;
+  color: #484848;
+}
+.widget .widget-subtitle {
+  font-size: 12px;
+  color: #7a7a7a;
+}
+.lstBtns div button{
+  width:100%;
+}
+.btn-xs{
+  padding: 2px;
+  font-size: 10px;
+}
+.divFloatRight {
+  position: absolute;
+  right: 25px;
+}
+.chevorn{
+  position: absolute;
+  font-size: 70px;
+  top: 40vh;
+  color: #b3b1b1cc !important;
+  cursor: pointer;
+}
+.chevornRight{
+  right: 10%;
+}
+.chevornLeft{
+  left: 55px;
+}
+.chevorn:hover{
+  color:#00a3e2;
+}

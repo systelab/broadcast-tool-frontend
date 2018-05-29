@@ -1,0 +1,11 @@
+<div class="divCarousel">
+    <ngb-carousel *ngIf="values" interval="10000">
+        <ng-template ngbSlide *ngFor="let item of values">
+            <img [style.width.px]="frameWidth" [style.max-width.px]="frameWidth" [style.min-width.px]="frameWidth" [src]="'data:image/jpeg;base64,'+item.image">
+            <div class="carousel-caption">
+                <h3 class="lbTitle mb-0">{{item.title}}</h3>
+                <small>({{item.dob}})</small>
+            </div>
+        </ng-template>
+    </ngb-carousel>
+</div>

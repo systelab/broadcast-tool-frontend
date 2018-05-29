@@ -1,0 +1,11 @@
+<h4 class="lbTitle">{{ 'COMMON_SELECT_THE_IMAGE' | translate | async }}</h4>
+<input #file type="file" multiple (change)="upload(file.files)" />
+<br/>
+<span style="font-weight:bold;color:green;" *ngIf="progress > 0 && progress < 100">
+	{{progress}}%
+</span>
+<div *ngIf=" id > 0">
+	<div class="text-center mt-4">
+		<button class="btn btn-primary" (click)="returnBack()">{{ 'COMMON_BACK' | translate | async }}</button>
+	</div>
+</div>

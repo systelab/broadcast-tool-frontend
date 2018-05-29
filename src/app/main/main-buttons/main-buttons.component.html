@@ -1,0 +1,18 @@
+<div>
+  <div class="row p-3">
+    <div class="col-md-7 text-left">
+      <button (click)="goAddPost()" class="btn btn-primary mr-2">{{ 'COMMON_ADD_POST' | translate | async }}</button>
+      <button (click)="showSection('wall')" class="btn btn-default  mr-2">{{ 'COMMON_OPEN_WALL' | translate | async }}</button>
+      <button (click)="showSection('viewer')" class="btn btn-default  mr-2">{{ 'COMMON_OPEN_VIEWER' | translate | async }}</button>
+    </div>
+    <div class="col-md-5 text-right">
+      <button (click)="changeView(1)" class="btn btnSelection" [class.active]="wall == 1">
+        <i class="fa fa-th-large"></i>
+      </button>
+      |
+      <button (click)="changeView(0)" class="btn btnSelection" [class.active]="wall == 0">
+        <i class="fa fa-bars"></i>
+      </button>
+    </div>
+  </div>
+</div>
