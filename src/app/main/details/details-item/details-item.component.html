@@ -1,5 +1,5 @@
-<div class="container-fluid widget" *ngIf="id > 0 && form == 0 ">
-	<div class="row lstBtns  container-fluid  justify-content-md-center" *ngIf="id > 0 && this.access === 1 && login == 1">
+<div class="container-fluid widget" *ngIf="id > 0 && form === 0 ">
+	<div class="row lstBtns  container-fluid  justify-content-md-center" *ngIf="id > 0 && this.access === 1 && login === 1">
 		<div class="col-md-2">
 			<button class="btn btn-success btn-sm" (click)="doEdit()">{{ 'COMMON_EDIT' | translate | async }}</button>
 		</div>
@@ -13,13 +13,13 @@
 			<button class="btn btn-default btn-sm" (click)="goBackList()">{{ 'COMMON_BACK_TO_LIST' | translate | async }}</button>
 		</div>
 	</div>
-	<div class="row lstBtns  container-fluid  justify-content-end" *ngIf="id > 0 && (login == 0 || (this.access === 0 && login == 1))">
+	<div class="row lstBtns  container-fluid  justify-content-end" *ngIf="id > 0 && (login === 0 || (this.access === 0 && login === 1))">
 
 		<div class="col-md-2">
 			<button class="btn btn-primary" (click)="goWall()">{{ 'COMMON_BACK' | translate | async }}</button>
 		</div>
 	</div>
-	<app-item-info *ngIf="id > 0  && form == 0 && item.id > 0" [image]="image" [item]="item"></app-item-info>
+	<app-item-info *ngIf="id > 0  && form === 0 && item.id > 0" [image]="image" [item]="item"></app-item-info>
 
 	<div class="carousel-controls">
 		<a data-slide="prev" (click)="doNextItem(0)" class="chevorn chevornLeft">
@@ -30,19 +30,19 @@
 		</a>
 	</div>
 </div>
-<div class="container-fluid widget" *ngIf="form == 1 && login == 1">
+<div class="container-fluid widget" *ngIf="form === 1 && login === 1">
 	<div class="divFloatRight">
 		<button class="btn btn-primary" (click)="goBack()">{{ 'COMMON_BACK' | translate | async }}</button>
 	</div>
 	<app-item-form [(item)]="item" [desCategory]="desCategory" [comboCategories]="comboCategories" (reload)="reload($event)"
 	 (changeForm)="changeForm($event)"></app-item-form>
 </div>
-<div class="container-fluid widget text-center mt-5" *ngIf=" form == 2">
+<div class="container-fluid widget text-center mt-5" *ngIf=" form === 2">
 	<app-upload-image [item]="item" (goBack)="goBack($event)" (changeForm)="changeForm($event)"></app-upload-image>
 </div>
-<div class="container-fluid widget text-center mt-5" *ngIf="form == 3">
+<div class="container-fluid widget text-center mt-5" *ngIf="form === 3">
 	<h4 class="lbTitle" style="font-weight:bold;color:green;">{{ 'COMMON_IMAGE_UPLOADED' | translate | async }}</h4>
-	<button type="button" *ngIf="id == 0" class="w-50 btn btn-primary mt-4" (click)="goDetails()">{{ 'COMMON_CONTINUE' | translate | async }}
+	<button type="button" *ngIf="id === 0" class="w-50 btn btn-primary mt-4" (click)="goDetails()">{{ 'COMMON_CONTINUE' | translate | async }}
 	</button>
 	<button type="button" *ngIf="id > 0" class="w-50 btn btn-primary mt-4" (click)="reload()">{{ 'COMMON_CONTINUE' | translate | async }}
 	</button>

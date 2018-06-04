@@ -1,12 +1,12 @@
-<app-header *ngIf="this.router.url.indexOf('main') != -1 || this.router.url.indexOf('item') != -1 && login == 1">
+<app-header *ngIf="this.router.url.indexOf('main') != -1 || this.router.url.indexOf('item') != -1 && login === 1">
 </app-header>
 <div class="pr-0">
 	<div header-content>
-		<app-main-buttons [wall]="wall" *ngIf="this.router.url == '/main' && login == 1"></app-main-buttons>
-		<div *ngIf="this.router.url == '/main'  && wall == 0  && login == 1">
+		<app-main-buttons [wall]="wall" *ngIf="this.router.url === '/main' && login === 1"></app-main-buttons>
+		<div *ngIf="this.router.url === '/main'  && wall === 0  && login === 1">
 			<app-comment-list #commentList (action)="doMenuAction($event)"></app-comment-list>
 		</div>
-		<div *ngIf="this.router.url == '/main' && wall == 1  && login == 1">
+		<div *ngIf="this.router.url === '/main' && wall === 1  && login === 1">
 			<app-wall [user]="login"></app-wall>
 		</div>
 		<div *ngIf="this.router.url.indexOf('/item/') != -1">

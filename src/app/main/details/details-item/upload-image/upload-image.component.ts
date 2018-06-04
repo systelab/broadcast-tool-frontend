@@ -11,8 +11,10 @@ export class UploadImageComponent {
 	public progress: number;
 	@Output() goBack = new EventEmitter();
 	@Output() changeForm = new EventEmitter<number>();
-	constructor(protected data: DataService) { }
 	@Input() item: Item;
+	public id = 0;
+	constructor(protected data: DataService) { this.id = this.item.id }
+
 
 	public upload(files) {
 		if (files.length === 0)

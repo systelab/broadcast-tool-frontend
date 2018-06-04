@@ -36,7 +36,7 @@ export class DetailsItemComponent implements OnInit {
 	}
 
 	public loadDetails() {
-		if (this.id == 0) {
+		if (this.id === 0) {
 			this.changeForm(1);
 			this.item = new Item();
 			this.item.title = '';
@@ -55,7 +55,7 @@ export class DetailsItemComponent implements OnInit {
 			this.data.getItemImage(this.id).subscribe((res) => {
 				this.image = res;
 			})
-			if (this.login == 1) {
+			if (this.login === 1) {
 				this.data.getItemsList(this.id).subscribe((res) => {
 					this.item.title = res.title;
 					this.item.id = res.id;
@@ -105,7 +105,7 @@ export class DetailsItemComponent implements OnInit {
 		this.changeForm(1);
 	}
 	public goBack() {
-		if (this.id == 0) {
+		if (this.id === 0) {
 			this.router.navigate(['/main']);
 		}
 		else {
@@ -153,7 +153,7 @@ export class DetailsItemComponent implements OnInit {
 		this.router.navigate(['/main']);
 	}
 	public loadListWall() {
-		if (this.login == 1) {
+		if (this.login === 1) {
 			this.data.getItemsList(-1).subscribe((res) => {
 				if (res) {
 					for (let i = 0; i < res.length; i++) {
@@ -178,7 +178,7 @@ export class DetailsItemComponent implements OnInit {
 	}
 	public doNextItem(v) {
 		const index = this.listPosts.indexOf(this.item.id);
-		if (v == 1) {
+		if (v === 1) {
 			let sum = index + v;
 			if (this.listPosts[sum]) {
 				this.id = this.listPosts[sum];

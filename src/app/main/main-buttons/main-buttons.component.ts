@@ -16,7 +16,7 @@ export class MainButtonsComponent {
 		const url = location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '') + '/#/' + route;
 		window.open(url, '_blank');
 	}
-	public goAddPost(e) {
+	public goAddPost() {
 		this.router.navigate(['/item/0']);
 	}
 	public changeView(v) {

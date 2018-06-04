@@ -6,11 +6,11 @@
       <button (click)="showSection('viewer')" class="btn btn-default  mr-2">{{ 'COMMON_OPEN_VIEWER' | translate | async }}</button>
     </div>
     <div class="col-md-5 text-right">
-      <button (click)="changeView(1)" class="btn btnSelection" [class.active]="wall == 1">
+      <button (click)="changeView(1)" class="btn btnSelection" [class.active]="wall === 1">
         <i class="fa fa-th-large"></i>
       </button>
       |
-      <button (click)="changeView(0)" class="btn btnSelection" [class.active]="wall == 0">
+      <button (click)="changeView(0)" class="btn btnSelection" [class.active]="wall === 0">
         <i class="fa fa-bars"></i>
       </button>
     </div>

@@ -67,7 +67,7 @@ export class ManageSessionService {
 
 	}
 	public error401(error) {
-		if (error.status == 401) {
+		if (error.status === 401) {
 			if (this.checkExistSession()) {
 				this.ClearSession();
 				window.location.reload();

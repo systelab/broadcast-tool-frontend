@@ -28,7 +28,7 @@ export class LoginComponent {
 	}
 	public creds: credentials = new credentials();
 
-	public doLogin() {
+	public doLogin(e) {
 		this.creds.password = this.password;
 		this.creds.username = this.userName;
 		this.userService.authenticateUser(this.creds).subscribe((response) => {

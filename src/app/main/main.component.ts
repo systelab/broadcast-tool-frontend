@@ -12,7 +12,7 @@ import { Variables } from '../common/variables';
 export class MainComponent implements OnInit {
 	public wall = 1;
 	public login = 0;
-	constructor(private router: Router, private session: ManageSessionService) {
+	constructor(public router: Router, private session: ManageSessionService) {
 	}
 	public ngOnInit() {
 		var tok = this.session.GetCurrentToken();

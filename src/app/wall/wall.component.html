@@ -15,12 +15,12 @@
 
 <div class="container-fluid justify-content-md-center row" *ngIf="values.length > 0">
 
-	<div class="card col-md-3" (click)="goDetails(item.id)" *ngFor="let item of values" [style.display]="valuesCategoriesKey.indexOf(item.idCategory) == -1 ? 'none': 'block'">
+	<div class="card col-md-3" (click)="goDetails(item.id)" *ngFor="let item of values" [style.display]="valuesCategoriesKey.indexOf(item.idCategory) === -1 ? 'none': 'block'">
 
 		<div class="middle">
 			<div class="text">{{ 'COMMON_VIEW' | translate | async }}</div>
 		</div>
-		<div class="draftLabel" *ngIf="item.draft && this.user == 1">
+		<div class="draftLabel" *ngIf="item.draft && this.user === 1">
 			<label class="label label-draft bg-danger text-white">{{ 'COMMON_DRAFT' | translate | async }}</label>
 		</div>
 		<div class="fill">
@@ -35,4 +35,4 @@
 	</div>
 </div>
 
-<systelab-loading *ngIf="values.length == 0 && itemsV == 0" [useClassic]="useClassic"></systelab-loading>
+<systelab-loading *ngIf="values.length === 0 && itemsV === 0" [useClassic]="useClassic"></systelab-loading>

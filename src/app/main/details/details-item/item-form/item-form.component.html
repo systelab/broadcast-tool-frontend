@@ -54,7 +54,7 @@
 		<button type="button" *ngIf="item.id > 0" class="w-50 btn btn-primary mt-4" [disabled]="(txtitle.invalid &&  txtitle.touched) || item.idCategory==0|| !item.title  || errorMessage > 0"
 		 (click)="doUpdate()">{{ 'COMMON_UPDATE' | translate | async }}
 		</button>
-		<button type="button" *ngIf="item.id == 0 || !item.id" class="w-50 btn btn-primary mt-4" [disabled]="(txtitle.invalid &&  txtitle.touched) ||item.idCategory==0||  !item.title || errorMessage > 0"
+		<button type="button" *ngIf="item.id === 0 || !item.id" class="w-50 btn btn-primary mt-4" [disabled]="(txtitle.invalid &&  txtitle.touched) ||item.idCategory==0||  !item.title || errorMessage > 0"
 		 (click)="doSave()">{{ 'COMMON_NEXT_STEP' | translate | async }}
 		</button>
 	</div>

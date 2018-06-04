@@ -29,7 +29,7 @@ export class WallComponent implements OnInit {
 	constructor(protected globals: Variables, private router: Router, protected preferencesService: PreferencesService, protected i18nServices: I18nService, protected data: DataService, protected dialo: DialogService) { }
 
 	ngOnInit() {
-		if (this.user == 1) {
+		if (this.user === 1) {
 			this.loadData(-1);
 		}
 		else {
