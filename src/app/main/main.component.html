@@ -2,7 +2,7 @@
 </app-header>
 <div class="pr-0">
 	<div header-content>
-		<app-main-buttons [wall]="wall" *ngIf="this.router.url === '/main' && login === 1"></app-main-buttons>
+		<app-main-buttons [(wall)]="wall" *ngIf="this.router.url === '/main' && login === 1"></app-main-buttons>
 		<div *ngIf="this.router.url === '/main'  && wall === 0  && login === 1">
 			<app-comment-list #commentList (action)="doMenuAction($event)"></app-comment-list>
 		</div>

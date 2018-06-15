@@ -15,7 +15,7 @@
 
 <div class="container-fluid justify-content-md-center row" *ngIf="values.length > 0">
 
-	<div class="card col-md-3" (click)="goDetails(item.id)" *ngFor="let item of values" [style.display]="valuesCategoriesKey.indexOf(item.idCategory) === -1 ? 'none': 'block'">
+	<div class="card col-md-3" (click)="goDetails(item.id)" *ngFor="let item of values" [style.display]="valuesCategoriesKey.indexOf(item.idCategory) == -1 ? 'none': 'block'">
 
 		<div class="middle">
 			<div class="text">{{ 'COMMON_VIEW' | translate | async }}</div>

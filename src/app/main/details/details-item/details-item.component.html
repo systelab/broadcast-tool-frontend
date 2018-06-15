@@ -34,11 +34,11 @@
 	<div class="divFloatRight">
 		<button class="btn btn-primary" (click)="goBack()">{{ 'COMMON_BACK' | translate | async }}</button>
 	</div>
-	<app-item-form [(item)]="item" [desCategory]="desCategory" [comboCategories]="comboCategories" (reload)="reload($event)"
+	<app-item-form [(item)]="item" [(id)]="id" [desCategory]="desCategory" [comboCategories]="comboCategories" (reload)="reload($event)"
 	 (changeForm)="changeForm($event)"></app-item-form>
 </div>
 <div class="container-fluid widget text-center mt-5" *ngIf=" form === 2">
-	<app-upload-image [item]="item" (goBack)="goBack($event)" (changeForm)="changeForm($event)"></app-upload-image>
+	<app-upload-image *ngIf="id" [id]="id" (goBack)="goBack($event)" (changeForm)="changeForm($event)"></app-upload-image>
 </div>
 <div class="container-fluid widget text-center mt-5" *ngIf="form === 3">
 	<h4 class="lbTitle" style="font-weight:bold;color:green;">{{ 'COMMON_IMAGE_UPLOADED' | translate | async }}</h4>

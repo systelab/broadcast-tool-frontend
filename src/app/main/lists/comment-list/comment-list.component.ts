@@ -5,7 +5,6 @@ import { PreferencesService } from 'systelab-preferences/lib/preferences.service
 import { DataService } from "../../../common/api/data.service";
 import { DialogService } from 'systelab-components/widgets/modal/dialog/dialog.service';
 import { Router } from '@angular/router';
-import { ManageSessionService } from '../../../common/api/session.service';
 
 export class CommentControlValueData {
 	constructor(public id: number, public title: string, public dob: string, public description: string, public path: string) {

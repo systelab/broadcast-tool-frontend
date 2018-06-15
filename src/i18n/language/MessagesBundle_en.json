@@ -54,5 +54,7 @@
     "COMMON_FOURTH_DAY":"Thu",
     "COMMON_FIFTH_DAY":"Fri",
     "COMMON_SIXTH_DAY":"Sat",
-    "COMMON_SEVENTH_DAY":"Sun"
+    "COMMON_SEVENTH_DAY":"Sun",
+    "COMMON_ACCEPTED_FORMAT":"The allowed format are: jpg, jpeg",
+    "COMMON_VERSION":"Version"
 }

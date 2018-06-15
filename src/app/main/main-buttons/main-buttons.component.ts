@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -7,8 +7,19 @@ import { Router } from '@angular/router';
 	styleUrls: ['./main-buttons.component.scss']
 })
 export class MainButtonsComponent {
+	private _wall: number;
 
-	@Input() wall: number;
+	@Input()
+	get wall(): number {
+		return this._wall;
+	}
+
+	@Output() wallChange = new EventEmitter();
+
+	set wall(value: number) {
+		this._wall = value;
+		this.wallChange.emit(this._wall);
+	}
 
 	constructor(private router: Router) {
 	}

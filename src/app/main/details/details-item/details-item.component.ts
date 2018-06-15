@@ -1,5 +1,4 @@
-import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
-import { HttpClient, HttpRequest, HttpEventType, HttpResponse, HttpParams } from '@angular/common/http'
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PreferencesService } from 'systelab-preferences/lib/preferences.service';
 import { I18nService } from 'systelab-translate/lib/i18n.service';
@@ -8,7 +7,6 @@ import { DialogService, MessagePopupService } from 'systelab-components/widgets/
 import { Item } from '../../../common/model/Item';
 
 
-import { Category } from '../../../common/model/category';
 @Component({
 	selector: 'app-details-item',
 	templateUrl: './details-item.component.html',
@@ -16,7 +14,7 @@ import { Category } from '../../../common/model/category';
 })
 export class DetailsItemComponent implements OnInit {
 	public id: number;
-	public form = 0;
+	public form: number = 0;
 	public item: Item = new Item();
 	public image = '';
 	public value = '';
@@ -24,9 +22,9 @@ export class DetailsItemComponent implements OnInit {
 	public desCategory = "";
 	public comboCategories: Array<Object> = [];
 	public listPosts: Array<number> = []
-	@Input() login = 0;
-	constructor(private http: HttpClient, protected messagePopupService: MessagePopupService, protected activatedRoute: ActivatedRoute, private router: Router, protected preferencesService: PreferencesService, protected i18nServices: I18nService, protected data: DataService, protected dialo: DialogService) {
-		this.id = this.activatedRoute.snapshot.params['id'];
+	@Input() login: number = 0;
+	constructor(protected messagePopupService: MessagePopupService, protected activatedRoute: ActivatedRoute, private router: Router, protected preferencesService: PreferencesService, protected i18nServices: I18nService, protected data: DataService, protected dialo: DialogService) {
+		this.id = parseInt(this.activatedRoute.snapshot.params['id'], 10);
 		this.access = 0;
 	}
 	ngOnInit() {
@@ -56,13 +54,17 @@ export class DetailsItemComponent implements OnInit {
 				this.image = res;
 			})
 			if (this.login === 1) {
+
 				this.data.getItemsList(this.id).subscribe((res) => {
 					this.item.title = res.title;
 					this.item.id = res.id;
 					this.item.description = res.description;
-					let da = res.dob.replace('T', ' ');
-					let g2 = da.split(':');
-					this.item.dob = g2[0] + ':' + g2[1];
+					if (res.dob) {
+						let da = res.dob.replace('T', ' ');
+						let g2 = da.split(':');
+						this.item.dob = g2[0] + ':' + g2[1];
+					}
+
 					this.access = res.access;
 					this.item.name = res.name;
 					this.item.lastname = res.lastName;
@@ -71,8 +73,10 @@ export class DetailsItemComponent implements OnInit {
 					this.item.nameCategory = res.categoryName;
 					this.desCategory = res.categoryName;
 					this.item.draft = res.draft;
-					const dt = res.expirationDate.split('T');
-					this.item.expirationDate = new Date(dt[0]);
+					if (res.expirationDate) {
+						const dt = res.expirationDate.split('T');
+						this.item.expirationDate = new Date(dt[0]);
+					}
 				}, (error) => {
 				});
 			}
@@ -81,9 +85,12 @@ export class DetailsItemComponent implements OnInit {
 					this.item.title = res.title;
 					this.item.id = res.id;
 					this.item.description = res.description;
-					let da = res.dob.replace('T', ' ');
-					let g2 = da.split(':');
-					this.item.dob = g2[0] + ':' + g2[1];
+					if (res.dob) {
+						let da = res.dob.replace('T', ' ');
+						let g2 = da.split(':');
+						this.item.dob = g2[0] + ':' + g2[1];
+					}
+
 					this.access = res.access;
 					this.item.name = res.name;
 					this.item.lastname = res.lastName;
@@ -92,8 +99,10 @@ export class DetailsItemComponent implements OnInit {
 					this.item.nameCategory = res.categoryName;
 					this.desCategory = res.categoryName;
 					this.item.draft = res.draft;
-					const dt = res.expirationDate.split('T');
-					this.item.expirationDate = new Date(dt[0]);
+					if (res.expirationDate) {
+						const dt = res.expirationDate.split('T');
+						this.item.expirationDate = new Date(dt[0]);
+					}
 				}, (error) => {
 				});
 
@@ -142,6 +151,9 @@ export class DetailsItemComponent implements OnInit {
 				this.data.deleteItem(this.item.id).subscribe((res) => {
 					if (res) {
 						this.messagePopupService.showInformationPopup('', this.i18nServices.instant('COMMON_ITEM_DELETED'));
+						if (document.body.classList.contains('modal-open')) {
+							document.body.classList.remove('modal-open');
+						}
 						this.router.navigate(['/main']);
 					}
 				});

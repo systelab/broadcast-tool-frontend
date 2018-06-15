@@ -1,6 +1,6 @@
 {
   "name": "BroadcastTool",
-  "version": "0.0.0",
+  "version": "1.2.0",
   "license": "MIT",
   "main": "main.js",
   "scripts": {

@@ -1,6 +1,9 @@
 <h4 class="lbTitle">{{ 'COMMON_SELECT_THE_IMAGE' | translate | async }}</h4>
 <input #file type="file" multiple (change)="upload(file.files)" />
-<br/>
+<div>
+	<small>{{ 'COMMON_ACCEPTED_FORMAT' | translate | async }}</small>
+</div>
+
 <span style="font-weight:bold;color:green;" *ngIf="progress > 0 && progress < 100">
 	{{progress}}%
 </span>

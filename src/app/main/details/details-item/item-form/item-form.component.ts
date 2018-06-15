@@ -10,6 +10,7 @@ import { Item } from '../../../../common/model/Item';
 })
 export class ItemFormComponent implements OnInit {
 	private _item: Item;
+	private _id: number;
 	public maxLength: number;
 	public remaining: number;
 	constructor(protected data: DataService) {
@@ -27,6 +28,18 @@ export class ItemFormComponent implements OnInit {
 		this._item = value;
 		this.itemChange.emit(this._item);
 	}
+	@Input()
+	get id(): number {
+		return this._id;
+	}
+
+	@Output() idChange = new EventEmitter();
+
+	set id(value: number) {
+		this._id = value;
+		this.idChange.emit(this._id);
+	}
+
 
 	@Output() reload = new EventEmitter();
 	@Output() changeForm = new EventEmitter<number>();
@@ -69,6 +82,7 @@ export class ItemFormComponent implements OnInit {
 	public doSave() {
 		this.data.postItem(this.item).subscribe((res) => {
 			this.item.id = res.id;
+			this.id = this.item.id;
 			this.changeForm.emit(2);
 		}, (error) => {
 		});

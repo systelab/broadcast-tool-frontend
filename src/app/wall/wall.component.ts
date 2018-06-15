@@ -1,10 +1,7 @@
-import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
-import { AbstractGrid } from 'systelab-components/widgets/grid/abstract-grid.component';
-import { MessagePopupService } from 'systelab-components/widgets/modal/message-popup/message-popup.service';
+import { Component, Input, OnInit } from '@angular/core';
 import { I18nService } from 'systelab-translate/lib/i18n.service';
 import { PreferencesService } from 'systelab-preferences/lib/preferences.service';
 import { DataService } from "../common/api/data.service";
-import { UserService } from '../common/api/user.service';
 import { Variables } from '../common/variables';
 import { DialogService } from 'systelab-components/widgets/modal/dialog/dialog.service';
 import { Router } from '@angular/router';
