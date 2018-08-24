@@ -26,6 +26,10 @@
     background-color: #4E4C6C;
     color:#fff;
     padding: 10px;
+    h6 {
+      font-weight: normal;
+      font-size: 12px;
+    }
 }
 .fill {
     display: flex;
@@ -36,9 +40,9 @@
   img {
     flex-shrink: 0;
     min-width: 100%;
-    min-height: 200px;
+    min-height: 240px;
     max-width: 100%;
-    max-height: 250px;
+    max-height: 240px;
   }
   .lbTitle{
       color:#fff;

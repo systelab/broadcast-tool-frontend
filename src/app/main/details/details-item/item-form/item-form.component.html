@@ -13,6 +13,15 @@
 	</div>
 	<div class="row mt-1 pt-2">
 		<div class="col-md-12">
+			<label class="col-form-label text-truncate lbLabel">{{ 'COMMON_LOCALIZATION' | translate | async }}</label>
+			<span class="errorLabel">*</span>
+			<systelab-select *ngIf="comboLocalizations.length > 0" [description]="desLocalization" [id]="item.idLocalization" [values]="comboLocalizations"
+			 [isDisabled]="false" (change)="comboLocalizationChangeEvent($event)">
+			</systelab-select>
+		</div>
+	</div>
+	<div class="row mt-1 pt-2">
+		<div class="col-md-12">
 			<label class="col-form-label text-truncate lbLabel">{{ 'COMMON_CATEGORY' | translate | async }}</label>
 			<span class="errorLabel">*</span>
 			<systelab-select *ngIf="comboCategories.length > 0" [description]="desCategory" [id]="item.idCategory" [values]="comboCategories"
@@ -51,10 +60,10 @@
 
 	<div class="form-group text-center" style="margin-bottom: 20px;">
 
-		<button type="button" *ngIf="item.id > 0" class="w-50 btn btn-primary mt-4" [disabled]="(txtitle.invalid &&  txtitle.touched) || item.idCategory==0|| !item.title  || errorMessage > 0"
+		<button type="button" *ngIf="item.id > 0" class="w-50 btn btn-primary mt-4" [disabled]="(txtitle.invalid &&  txtitle.touched) || item.idLocalization==0 || item.idCategory==0|| !item.title  || errorMessage > 0"
 		 (click)="doUpdate()">{{ 'COMMON_UPDATE' | translate | async }}
 		</button>
-		<button type="button" *ngIf="item.id === 0 || !item.id" class="w-50 btn btn-primary mt-4" [disabled]="(txtitle.invalid &&  txtitle.touched) ||item.idCategory==0||  !item.title || errorMessage > 0"
+		<button type="button" *ngIf="item.id === 0 || !item.id" class="w-50 btn btn-primary mt-4" [disabled]="(txtitle.invalid &&  txtitle.touched) ||item.idLocalization==0 ||item.idCategory==0||  !item.title || errorMessage > 0"
 		 (click)="doSave()">{{ 'COMMON_NEXT_STEP' | translate | async }}
 		</button>
 	</div>

@@ -7,7 +7,7 @@ import { DialogService } from 'systelab-components/widgets/modal/dialog/dialog.s
 import { Router } from '@angular/router';
 
 export class CommentControlValueData {
-	constructor(public id: number, public title: string, public dob: string, public description: string, public path: string) {
+	constructor(public id: number, public title: string, public dob: string, public description: string, public path: string, public localization: string) {
 
 	}
 }
@@ -54,7 +54,7 @@ export class CommentListComponent extends AbstractGrid<CommentControlValueData> 
 				for (let i = 0; i < res.length; i++) {
 					let da = res[i].dob.replace('T', ' ');
 					let g2 = da.split(':');
-					let hu: CommentControlValueData = new CommentControlValueData(res[i].id, res[i].title, g2[0] + ':' + g2[1], res[i].description, res[i].path);
+					let hu: CommentControlValueData = new CommentControlValueData(res[i].id, res[i].title, g2[0] + ':' + g2[1], res[i].description, res[i].path, res[i].localization);
 					this.values.push(hu);
 				}
 				this.gridOptions.api.setRowData(this.values);
@@ -66,6 +66,7 @@ export class CommentListComponent extends AbstractGrid<CommentControlValueData> 
 		const columnDefs: Array<any> = [];
 		columnDefs.push({ colId: 'title', headerName: 'Title', field: 'title', filter: 'text' });
 		columnDefs.push({ colId: 'date', headerName: 'Date', field: 'dob' });
+		columnDefs.push({ colId: 'localization', headerName: 'Localization', field: 'localization' });
 		columnDefs.push({ colId: 'description', headerName: 'Description', field: 'description' });
 		return columnDefs;
 	}

@@ -12,7 +12,12 @@
 	</div>
 
 </div>
-
+<div class="w-100 text-right mb-3 pr-3">
+	<a class="cursor" href="{{rssUrl}}" target="__blank">
+		<i class="fa fa-rss-square mr-1 cursor"></i>
+		<label class="cursor">{{ 'COMMON_RSS' | translate | async }}</label>
+	</a>
+</div>
 <div class="container-fluid justify-content-md-center row" *ngIf="values.length > 0">
 
 	<div class="card col-md-3" (click)="goDetails(item.id)" *ngFor="let item of values" [style.display]="valuesCategoriesKey.indexOf(item.idCategory) == -1 ? 'none': 'block'">
@@ -29,10 +34,18 @@
 
 		<div class="card-body">
 			<h5 class="lbTitle ellipsis">{{item.title}}</h5>
-			<h6 class=" ellipsis">{{item.name}} {{item.lastname}}</h6>
+			<h6 class=" ellipsis" *ngIf="item.name">{{item.name}} {{item.lastname}}</h6>
+			<small class=" ellipsis">{{item.localization}}</small>
+			<br>
 			<small class="card-text">{{item.dob}}</small>
 		</div>
 	</div>
+</div>
+<div class="w-100 text-right mt-3 pr-3">
+	<a class="cursor" href="{{rssUrl}}" target="__blank">
+		<i class="fa fa-rss-square mr-1 cursor"></i>
+		<label class="cursor">{{ 'COMMON_RSS' | translate | async }}</label>
+	</a>
 </div>
 
 <systelab-loading *ngIf="values.length === 0 && itemsV === 0" [useClassic]="useClassic"></systelab-loading>

@@ -13,6 +13,7 @@ const routes: Routes = [
 	{ path: 'item/:id', component: MainComponent },
 	{ path: 'wall', component: WallComponent },
 	{ path: 'viewer', component: ViewerComponent },
+	{ path: 'viewer/:id', component: ViewerComponent },
 	{ path: '', redirectTo: 'wall', pathMatch: 'full' },
 	{ path: '**', component: WallComponent }
 ];

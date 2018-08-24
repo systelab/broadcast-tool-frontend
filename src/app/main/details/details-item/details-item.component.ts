@@ -19,8 +19,10 @@ export class DetailsItemComponent implements OnInit {
 	public image = '';
 	public value = '';
 	public access: number;
-	public desCategory = "";
+	public desCategory = '';
+	public desLocalization = '';
 	public comboCategories: Array<Object> = [];
+	public comboLocalizations: Array<Object> = [];
 	public listPosts: Array<number> = []
 	@Input() login: number = 0;
 	constructor(protected messagePopupService: MessagePopupService, protected activatedRoute: ActivatedRoute, private router: Router, protected preferencesService: PreferencesService, protected i18nServices: I18nService, protected data: DataService, protected dialo: DialogService) {
@@ -28,6 +30,7 @@ export class DetailsItemComponent implements OnInit {
 		this.access = 0;
 	}
 	ngOnInit() {
+		this.loadLocalizations();
 		this.loadCategories();
 		this.loadDetails();
 		this.loadListWall();
@@ -46,6 +49,8 @@ export class DetailsItemComponent implements OnInit {
 			this.item.lastname = '';
 			this.item.idCategory = 0;
 			this.item.draft = false;
+			this.item.idLocalization = 0;
+			this.item.nameLocalization = '';
 			this.item.expirationDate = new Date();
 		}
 		else {
@@ -72,6 +77,9 @@ export class DetailsItemComponent implements OnInit {
 					this.item.idCategory = res.idCategory;
 					this.item.nameCategory = res.categoryName;
 					this.desCategory = res.categoryName;
+					this.desLocalization = res.localization;
+					this.item.idLocalization = res.idLocalization;
+					this.item.nameLocalization = res.localization;
 					this.item.draft = res.draft;
 					if (res.expirationDate) {
 						const dt = res.expirationDate.split('T');
@@ -81,7 +89,7 @@ export class DetailsItemComponent implements OnInit {
 				});
 			}
 			else {
-				this.data.getItemsListAnonymous(this.id).subscribe((res) => {
+				this.data.getItemsListAnonymous(this.id, 0).subscribe((res) => {
 					this.item.title = res.title;
 					this.item.id = res.id;
 					this.item.description = res.description;
@@ -96,8 +104,11 @@ export class DetailsItemComponent implements OnInit {
 					this.item.lastname = res.lastName;
 					this.item.pinned = res.pinned;
 					this.item.idCategory = res.idCategory;
+					this.item.idLocalization = res.idLocalization;
+					this.item.nameLocalization = res.localization;
 					this.item.nameCategory = res.categoryName;
 					this.desCategory = res.categoryName;
+					this.desLocalization = res.localization;
 					this.item.draft = res.draft;
 					if (res.expirationDate) {
 						const dt = res.expirationDate.split('T');
@@ -134,6 +145,14 @@ export class DetailsItemComponent implements OnInit {
 			}
 		})
 	}
+	public loadLocalizations() {
+		this.data.ApiLocalizationGet(0).subscribe((res) => {
+			for (let i = 0; i < res.body.length; i++) {
+				this.comboLocalizations.push({ description: res.body[i].name, id: res.body[i].id });
+			}
+		})
+	}
+
 	public goDetails() {
 		this.id = this.item.id;
 		this.changeForm(0);
@@ -177,7 +196,7 @@ export class DetailsItemComponent implements OnInit {
 			});
 		}
 		else {
-			this.data.getItemsListAnonymous(-1).subscribe((res) => {
+			this.data.getItemsListAnonymous(-1, 0).subscribe((res) => {
 				if (res) {
 					for (let i = 0; i < res.length; i++) {
 						if (!this.listPosts.includes(res[i].id)) {

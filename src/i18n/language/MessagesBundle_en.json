@@ -56,5 +56,9 @@
     "COMMON_SIXTH_DAY":"Sat",
     "COMMON_SEVENTH_DAY":"Sun",
     "COMMON_ACCEPTED_FORMAT":"The allowed format are: jpg, jpeg",
-    "COMMON_VERSION":"Version"
+    "COMMON_VERSION":"Version",
+    "COMMON_LOCALIZATION":"Localization",
+    "COMMON_SELECT_LOCALIZATION":"Select Localization",
+    "COMMON_SELECT_CATEGORY":"Select Category",
+    "COMMON_RSS":"RSS"
 }

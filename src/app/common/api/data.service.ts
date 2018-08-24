@@ -10,7 +10,7 @@ import { BASE_PATH } from '../variables';
 export class DataService {
     private domain = "";
 
-    constructor(private httpClient: HttpClient, private session: ManageSessionService,  @Optional() @Inject(BASE_PATH) basePath: string) {
+    constructor(private httpClient: HttpClient, private session: ManageSessionService, @Optional() @Inject(BASE_PATH) basePath: string) {
         if (basePath) {
             this.domain = basePath;
         }
@@ -29,8 +29,8 @@ export class DataService {
         }
     }
 
-    public getItemsListAnonymous(id) {
-        let params = new HttpParams().set('id', id);
+    public getItemsListAnonymous(id, localization) {
+        let params = new HttpParams().set('id', id).set('localization', localization);
         const headers = this.defaultHeaders.set('Content-Type', 'application/x-www-form-urlencoded')
         return this.httpClient.get<any>(this.domain + '/api/item/anonymous', {
             headers: headers,
@@ -53,7 +53,7 @@ export class DataService {
             let body = '';
             const dat = new Date(item.expirationDate);
             let result = this.pad(dat.getDate()) + "/" + this.pad(dat.getMonth() + 1) + "/" + dat.getFullYear();
-            let params = new HttpParams().set('IdCategory', item.idCategory).set('title', item.title).set('description', item.description).set('draft', item.draft).set('expDate', result).set('pinned', item.pinned);
+            let params = new HttpParams().set('IdCategory', item.idCategory).set('title', item.title).set('description', item.description).set('draft', item.draft).set('expDate', result).set('pinned', item.pinned).set('IdLocalization', item.idLocalization);
             const headers = this.defaultHeaders.set('Content-Type', 'application/json; charset=utf-8').set('Authorization', tok);
             return this.httpClient.post<any>(this.domain + '/api/item', body, {
                 headers: headers,
@@ -108,7 +108,7 @@ export class DataService {
         if (tok) {
             const dat = new Date(item.expirationDate);
             let result = this.pad(dat.getDate()) + "/" + this.pad(dat.getMonth() + 1) + "/" + dat.getFullYear();
-            let params = new HttpParams().set('IdCategory', item.idCategory).set('id', item.id).set('title', item.title).set('description', item.description).set('pinned', item.pinned).set('draft', item.draft).set('expDate', result);
+            let params = new HttpParams().set('IdCategory', item.idCategory).set('id', item.id).set('title', item.title).set('description', item.description).set('pinned', item.pinned).set('draft', item.draft).set('expDate', result).set('IdLocalization', item.idLocalization);
             let body = '';
             const headers = this.defaultHeaders.set('Content-Type', 'application/json; charset=utf-8').set('Authorization', tok);
             return this.httpClient.put<any>(this.domain + '/api/item', body, {
@@ -118,18 +118,18 @@ export class DataService {
         }
     }
 
-    public uploadFile(id,formData){
+    public uploadFile(id, formData) {
         let params = new HttpParams().set('id', id.toString());
         let g = this.domain + '/api/item/upload';
-        
+
         const uploadReq = new HttpRequest('POST', g, formData, {
-          reportProgress: false,
-          params: params
+            reportProgress: false,
+            params: params
         });
-    
-       return this.httpClient.request(uploadReq);
+
+        return this.httpClient.request(uploadReq);
     }
-    
+
 
 
     public copyToClipboard(element) {
@@ -145,6 +145,16 @@ export class DataService {
     }
 
 
+
+    public ApiLocalizationGet(id: number, ): Observable<HttpResponse<any>> {
+        let uri = `/api/Localization`;
+        let headers = new HttpHeaders();
+        let params = new HttpParams();
+        if (id !== undefined && id !== null) {
+            params = params.set('id', id + '');
+        }
+        return this.sendRequest<any>('get', uri, headers, params, null);
+    }
     /**
       * Method ApiCategoryGet
       * @param id This is a Communication Tool for Systelab

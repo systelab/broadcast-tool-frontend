@@ -19,6 +19,10 @@
 			<span>{{item.name}} {{item.lastname}}</span>
 		</div>
 		<div *ngIf="item.name && item.lastname">
+			<label class="lbLabel">{{ 'COMMON_LOCALIZATION' | translate | async }}:</label>
+			<span>{{item.nameLocalization}}</span>
+		</div>
+		<div *ngIf="item.name && item.lastname">
 			<label class="lbLabel">{{ 'COMMON_CATEGORY' | translate | async }}:</label>
 			<span>{{item.nameCategory}}</span>
 		</div>

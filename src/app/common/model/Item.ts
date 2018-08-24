@@ -14,6 +14,8 @@ export class Item {
 	lastname: string;
 	idCategory: number;
 	nameCategory: string;
+	idLocalization:number;
+	nameLocalization:string;
 }
 
 

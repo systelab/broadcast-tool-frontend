@@ -1,13 +1,13 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Optional, Inject } from '@angular/core';
 import { I18nService } from 'systelab-translate/lib/i18n.service';
 import { PreferencesService } from 'systelab-preferences/lib/preferences.service';
 import { DataService } from "../common/api/data.service";
-import { Variables } from '../common/variables';
+import { Variables, BASE_PATH } from '../common/variables';
 import { DialogService } from 'systelab-components/widgets/modal/dialog/dialog.service';
 import { Router } from '@angular/router';
 import { Category } from '../common/model/category';
 export class CommentControlValueData {
-	constructor(public id: number, public title: string, public dob: string, public description: string, public image: string, public name: string, public lastname: string, public idCategory: number, public draft: boolean) {
+	constructor(public id: number, public title: string, public dob: string, public description: string, public image: string, public name: string, public lastname: string, public idCategory: number, public draft: boolean, public localization: string) {
 
 	}
 }
@@ -21,9 +21,14 @@ export class WallComponent implements OnInit {
 	public values: Array<CommentControlValueData> = [];
 	public valuesCategories: Array<Category> = [];
 	public valuesCategoriesKey: Array<number> = [];
-	public itemsV: number = 0;
+	public itemsV = 0;
+	public rssUrl = '';
 	@Input() user = 0;
-	constructor(protected globals: Variables, private router: Router, protected preferencesService: PreferencesService, protected i18nServices: I18nService, protected data: DataService, protected dialo: DialogService) { }
+	constructor(@Optional() @Inject(BASE_PATH) basePath: string, protected globals: Variables, private router: Router, protected preferencesService: PreferencesService, protected i18nServices: I18nService, protected data: DataService, protected dialo: DialogService) {
+
+		this.rssUrl = basePath + '/api/rss';
+
+	}
 
 	ngOnInit() {
 		if (this.user === 1) {
@@ -49,7 +54,7 @@ export class WallComponent implements OnInit {
 						this.valuesCategories.push(cat);
 						this.valuesCategoriesKey.push(res[i].idCategory);
 					}
-					let hu: CommentControlValueData = new CommentControlValueData(res[i].id, res[i].title, g2[0] + ':' + g2[1], res[i].description, image, '', '', res[i].idCategory, res[i].draft);
+					let hu: CommentControlValueData = new CommentControlValueData(res[i].id, res[i].title, g2[0] + ':' + g2[1], res[i].description, image, '', '', res[i].idCategory, res[i].draft, res[i].localization);
 					this.values.push(hu);
 					this.data.getItemImage(res[i].id).subscribe((res) => {
 						let index = this.values.indexOf(hu);
@@ -64,7 +69,7 @@ export class WallComponent implements OnInit {
 		});
 	}
 	public loadDataAnonymous(v) {
-		this.data.getItemsListAnonymous(v).subscribe((res) => {
+		this.data.getItemsListAnonymous(v, 0).subscribe((res) => {
 			if (res) {
 				for (let i = 0; i < res.length; i++) {
 					let image = '';
@@ -78,7 +83,7 @@ export class WallComponent implements OnInit {
 						this.valuesCategories.push(cat);
 						this.valuesCategoriesKey.push(res[i].idCategory);
 					}
-					let hu: CommentControlValueData = new CommentControlValueData(res[i].id, res[i].title, g2[0] + ':' + g2[1], res[i].description, image, res[i].name, res[i].lastName, res[i].idCategory, res[i].draft);
+					let hu: CommentControlValueData = new CommentControlValueData(res[i].id, res[i].title, g2[0] + ':' + g2[1], res[i].description, image, res[i].name, res[i].lastName, res[i].idCategory, res[i].draft, res[i].localization);
 					this.values.push(hu);
 					this.data.getItemImage(res[i].id).subscribe((res) => {
 						let index = this.values.indexOf(hu);

@@ -1,13 +1,13 @@
 <div class="container-fluid widget" *ngIf="id > 0 && form === 0 ">
 	<div class="row lstBtns  container-fluid  justify-content-md-center" *ngIf="id > 0 && this.access === 1 && login === 1">
 		<div class="col-md-2">
-			<button class="btn btn-success btn-sm" (click)="doEdit()">{{ 'COMMON_EDIT' | translate | async }}</button>
+			<button class="btn btn-default btn-sm" (click)="doEdit()">{{ 'COMMON_EDIT' | translate | async }}</button>
 		</div>
 		<div class="col-md-2">
-			<button class="btn btn-primary btn-sm" (click)="changeForm(2)">{{ 'COMMON_CHANGE_IMAGE' | translate | async }}</button>
+			<button class="btn btn-default btn-sm" (click)="changeForm(2)">{{ 'COMMON_CHANGE_IMAGE' | translate | async }}</button>
 		</div>
 		<div class="col-md-2">
-			<button class="btn btn-danger btn-sm" (click)="doDelete()">{{ 'COMMON_DELETE' | translate | async }}</button>
+			<button class="btn btn-default btn-sm" (click)="doDelete()">{{ 'COMMON_DELETE' | translate | async }}</button>
 		</div>
 		<div class="col-md-2">
 			<button class="btn btn-default btn-sm" (click)="goBackList()">{{ 'COMMON_BACK_TO_LIST' | translate | async }}</button>
@@ -34,8 +34,8 @@
 	<div class="divFloatRight">
 		<button class="btn btn-primary" (click)="goBack()">{{ 'COMMON_BACK' | translate | async }}</button>
 	</div>
-	<app-item-form [(item)]="item" [(id)]="id" [desCategory]="desCategory" [comboCategories]="comboCategories" (reload)="reload($event)"
-	 (changeForm)="changeForm($event)"></app-item-form>
+	<app-item-form [(item)]="item" [(id)]="id" [desCategory]="desCategory" [desLocalization]="desLocalization" [comboCategories]="comboCategories"
+	 [comboLocalizations]="comboLocalizations" (reload)="reload($event)" (changeForm)="changeForm($event)"></app-item-form>
 </div>
 <div class="container-fluid widget text-center mt-5" *ngIf=" form === 2">
 	<app-upload-image *ngIf="id" [id]="id" (goBack)="goBack($event)" (changeForm)="changeForm($event)"></app-upload-image>

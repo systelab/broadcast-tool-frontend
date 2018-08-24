@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Input, Output } from '@angular/core';
 import { DataService } from '../../../../common/api/data.service';
 import { Item } from '../../../../common/model/Item';
+import { I18nService } from '../../../../../../node_modules/systelab-translate/lib/i18n.service';
 
 
 @Component({
@@ -13,8 +14,20 @@ export class ItemFormComponent implements OnInit {
 	private _id: number;
 	public maxLength: number;
 	public remaining: number;
-	constructor(protected data: DataService) {
+	@Input() desCategory = '';
+	@Input() desLocalization = '';
+	constructor(protected data: DataService, protected i18nServices: I18nService) {
 		this.maxLength = 1400;
+
+		i18nServices.get(['COMMON_SELECT_LOCALIZATION', 'COMMON_SELECT_CATEGORY']).subscribe((res) => {
+			if (this.desLocalization === '') {
+				this.desLocalization = res.COMMON_SELECT_LOCALIZATION;
+			}
+			if (this.desCategory === '') {
+				this.desCategory = res.COMMON_SELECT_CATEGORY;
+			}
+		})
+
 	}
 
 	@Input()
@@ -43,7 +56,7 @@ export class ItemFormComponent implements OnInit {
 
 	@Output() reload = new EventEmitter();
 	@Output() changeForm = new EventEmitter<number>();
-	@Input() desCategory = '';
+	@Input() comboLocalizations: Array<Object>;
 	@Input() comboCategories: Array<Object>;
 	ngOnInit() {
 		if (this.item.id > 0) {
@@ -72,6 +85,9 @@ export class ItemFormComponent implements OnInit {
 	}
 	public comboChangeEvent(event) {
 		this.item.idCategory = event.id;
+	}
+	public comboLocalizationChangeEvent(event) {
+		this.item.idLocalization = event.id;
 	}
 	public doUpdate() {
 		this.data.putItem(this.item).subscribe((res) => {
